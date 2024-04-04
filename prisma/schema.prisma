@@ -1,0 +1,103 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model brands {
+  id             Int     @id @default(autoincrement())
+  fname          String? @db.Text
+  lname          String? @db.Text
+  brname         String  @db.Text
+  cate           String? @db.Text
+  fans           Int?    @default(0)
+  web            String? @db.Text
+  info           String? @db.Text
+  tel            String? @db.Text
+  opening        String? @db.Text
+  address        String? @db.Text
+  last_update    Int?
+  last_login     Int?
+  reg_date       Int?
+  profile_img    String? @db.Text
+  profile_poster String? @db.Text
+  pass           String? @db.Text
+  email          String  @db.Text
+  hash           String? @db.Text
+  deleteds       String? @db.Text
+}
+
+model er_log {
+  id   Int    @id @default(autoincrement())
+  date Int
+  line String @db.Text
+  url  String @db.Text
+  mess String @db.Text
+}
+
+model faqs {
+  id   Int    @id @default(autoincrement())
+  ques String @db.Text
+  ans  String @db.Text
+}
+
+model help {
+  id    Int     @id @default(autoincrement())
+  email String? @db.Text
+  subj  String? @db.Text
+  mess  String? @db.Text
+  time  String? @db.Text
+}
+
+model posts {
+  id          Int     @id @default(autoincrement())
+  brands_id   Int?
+  cate        String? @db.Text
+  sub_cate    String? @db.Text
+  country     String? @db.Text
+  city        String? @db.Text
+  brand_img   String  @db.Text
+  brands_name String  @db.Text
+  brand_title String  @db.Text
+  brand_loc   String  @db.Text
+  post_des    String  @db.Text
+  post_img    String  @db.Text
+  wow         Int
+  share       Int
+  med         String? @db.Text
+  time        Int?
+}
+
+model setting {
+  id      Int    @id @default(autoincrement())
+  about   String @db.Text
+  privacy String @db.Text
+  cookie  String @db.Text
+  help    String @db.Text
+  phone   String @db.Text
+  email   String @db.Text
+  admin   String @db.Text
+  pass    String @db.Text
+}
+
+model users {
+  id           Int     @id @default(autoincrement())
+  fname        String? @db.Text
+  lname        String? @db.Text
+  info         String? @db.Text
+  tel          String? @db.Text
+  loc          String? @db.Text
+  hash         String? @db.Text
+  joining_date Int?
+  password     String? @db.Text
+  email        String? @db.Text
+  profile_pic  String? @db.Text
+  poster       String? @db.Text
+  likes        Int?
+  country      String? @db.Text
+  city         String? @db.Text
+  deleteds     String? @db.Text
+}
